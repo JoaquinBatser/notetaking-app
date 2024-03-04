@@ -60,7 +60,7 @@ const Note = ({ note, setNotes }) => {
       <div className=' flex justify-between mt-12'>
         {!deleting ? (
           <button
-            className='hover:text-red-500 absolute bottom-0 right-0 mr-4 mb-4 '
+            className='hover:text-red-500 absolute bottom-0 right-0 mr-4 mb-4 text-neutral-900  '
             onClick={() => {
               setDeleting(true)
             }}
