@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-neutral-900;
+    @apply bg-black;
     @apply text-[#A3A3A3];
   }
 }

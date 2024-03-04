@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import { IconArrowBack, IconTrashXFilled } from '@tabler/icons-react'
 
 const DeleteNote = ({ note, setNotes, setDeleting }) => {
   const deleteNote = async () => {
@@ -10,20 +11,20 @@ const DeleteNote = ({ note, setNotes, setDeleting }) => {
     setDeleting(false)
   }
   return (
-    <div className='flex justify-between'>
+    <div className='flex justify-between absolute bottom-0 right-0 mr-4 mb-4'>
       <button
-        className='bg-neutral-800 py-1 px-4 rounded hover:bg-neutral-700 transition-all'
+        className='hover:text-blue-500'
         onClick={() => {
           setDeleting(false)
         }}
       >
-        Cancel
+        <IconArrowBack />
       </button>
       <button
-        className='bg-neutral-800 py-1 px-4 rounded hover:bg-neutral-700 transition-all'
+        className='hover:text-red-500'
         onClick={deleteNote}
       >
-        Delete
+        <IconTrashXFilled />
       </button>
     </div>
   )

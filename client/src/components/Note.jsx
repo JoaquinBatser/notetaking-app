@@ -4,6 +4,7 @@ import axios from 'axios'
 import DeleteNote from './DeleteNote'
 import EditNoteText from './EditNote/EditNoteText'
 import EditNoteTitle from './EditNote/EditNoteTitle'
+import { IconEdit, IconTrashXFilled, IconArrowBack } from '@tabler/icons-react'
 
 const Note = ({ note, setNotes }) => {
   const [deleting, setDeleting] = useState(false)
@@ -13,17 +14,19 @@ const Note = ({ note, setNotes }) => {
   return (
     <div
       key={note._id}
-      className='h-fit p-4 border shadow-sm border-[#1a1a1a] bg-[#151515]  hover:border-neutral-700 transition-all rounded-lg hover:shadow-xl hover:cursor-pointer'
+      className='border p-4 border-neutral-900 relative hover:border-neutral-500 hover:cursor-pointer transition-all '
     >
       {!editingTitle ? (
-        <div className='flex justify-between'>
-          <h2 className='font-bold text-lg mb-2'>{note.title}</h2>
+        <div className='flex justify-between items-start'>
+          <h2 className='font-bold text-lg break-all mr-4'>{note.title}</h2>
+
           <button
+            className='hover:text-yellow-500 text-neutral-900'
             onClick={() => {
               setEditingTitle(true)
             }}
           >
-            +
+            <IconEdit size={20} />
           </button>
         </div>
       ) : (
@@ -33,15 +36,17 @@ const Note = ({ note, setNotes }) => {
           setEditingTitle={setEditingTitle}
         />
       )}
+      <hr className='my-4 border-neutral-900' />
       {!editingText ? (
-        <div className='flex justify-between'>
-          <p className='text-sm mb-2'>{note.text}</p>
+        <div className='flex justify-between items-start h-full'>
+          <p className='text-sm h-full break-all mr-4 '>{note.text}</p>
           <button
+            className='hover:text-yellow-500 text-neutral-900'
             onClick={() => {
               setEditingText(true)
             }}
           >
-            +
+            <IconEdit size={20} />
           </button>
         </div>
       ) : (
@@ -52,15 +57,15 @@ const Note = ({ note, setNotes }) => {
         />
       )}
 
-      <div className='mb-2'>
+      <div className=' flex justify-between mt-12'>
         {!deleting ? (
           <button
-            className='bg-neutral-800 py-1 px-4 rounded hover:bg-neutral-700 transition-all'
+            className='hover:text-red-500 absolute bottom-0 right-0 mr-4 mb-4 '
             onClick={() => {
               setDeleting(true)
             }}
           >
-            Delete
+            <IconTrashXFilled size={20} />
           </button>
         ) : (
           <DeleteNote

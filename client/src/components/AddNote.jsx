@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-
+import { IconPencilPlus } from '@tabler/icons-react'
+import { IconLayoutGridAdd } from '@tabler/icons-react'
+import { IconArrowBack } from '@tabler/icons-react'
 const AddNote = ({ setNotes }) => {
   const [text, setText] = useState('')
   const [title, setTitle] = useState('')
@@ -25,28 +27,42 @@ const AddNote = ({ setNotes }) => {
   return (
     <>
       {adding ? (
-        <form onSubmit={handleSubmit}>
-          <textarea
-            autoFocus
-            onChange={e => setTitle(e.target.value)}
-            placeholder='Add Title'
-          />
-          <textarea
-            autoFocus
-            onChange={e => setText(e.target.value)}
-            placeholder='Add Note'
-          />
-          <div>
-            <button onClick={() => setAdding(false)}>Cancel</button>
-            <button type='submit'>Add</button>
-          </div>
-        </form>
+        <div>
+          <form onSubmit={handleSubmit}>
+            <textarea
+              className='px-4 resize-none h-10 py-2 mb-2 w-full border placeholder-neutral-600 text-sm  border-neutral-900 bg-black'
+              autoFocus
+              onChange={e => setTitle(e.target.value)}
+              placeholder='Add Title'
+            />
+            <textarea
+              className='mb-2 resize-none h-32 px-4 py-2 w-full border placeholder-neutral-600 text-sm border-neutral-900 bg-black'
+              autoFocus
+              onChange={e => setText(e.target.value)}
+              placeholder='Add Note'
+            />
+            <div className='flex justify-between'>
+              <button
+                className='hover:text-blue-500'
+                onClick={() => setAdding(false)}
+              >
+                <IconArrowBack />
+              </button>
+              <button
+                className='hover:text-green-500'
+                type='submit'
+              >
+                <IconLayoutGridAdd />
+              </button>
+            </div>
+          </form>
+        </div>
       ) : (
         <button
-          className='bg-neutral-800'
+          className='hover:text-green-500'
           onClick={() => setAdding(true)}
         >
-          Add Note
+          <IconPencilPlus />
         </button>
       )}
     </>

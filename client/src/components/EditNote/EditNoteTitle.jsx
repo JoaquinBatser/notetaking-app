@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { IconCheck, IconX } from '@tabler/icons-react'
 
 const EditNoteTitle = ({ note, setNotes, setEditingTitle }) => {
   const [title, setTitle] = useState('')
@@ -21,13 +22,26 @@ const EditNoteTitle = ({ note, setNotes, setEditingTitle }) => {
   return (
     <form onSubmit={handleSubmit}>
       <textarea
+        className='mb-2 px-4 py-2 w-full border placeholder-neutral-600 text-sm border-neutral-900 bg-black'
         autoFocus
         onChange={e => setTitle(e.target.value)}
         placeholder='Edit Title'
       />
 
-      <button onClick={() => setEditingTitle(false)}>Cancel</button>
-      <button type='submit'>Edit</button>
+      <div className='flex justify-between'>
+        <button
+          className='hover:text-red-500'
+          onClick={() => setEditingTitle(false)}
+        >
+          <IconX size={20} />
+        </button>
+        <button
+          className='hover:text-green-500'
+          type='submit'
+        >
+          <IconCheck size={20} />
+        </button>
+      </div>
     </form>
   )
 }

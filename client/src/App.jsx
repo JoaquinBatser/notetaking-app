@@ -28,10 +28,12 @@ function App() {
 
   return (
     <div className='gap-2 h-dvh grid grid-cols-12'>
-      <aside className='col-span-2  p-4 flex flex-col'>
-        Home
+      <aside className='col-span-2 font-bold  p-4 flex flex-col border-r border-neutral-900'>
         <AddNote setNotes={setNotes} />
+        <hr className='my-4 border-neutral-900' />
+        <p>Home</p>
       </aside>
+
       <main className='col-span-10 h-full'>
         <NoteList
           notes={notes}

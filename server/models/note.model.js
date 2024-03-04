@@ -5,7 +5,7 @@ const noteCollection = 'notes'
 const noteSchema = new mongoose.Schema({
   title: String,
   text: String,
-  category: String,
+  // category: String,
 })
 
 export const noteModel = mongoose.model(noteCollection, noteSchema)
